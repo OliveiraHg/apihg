@@ -165,6 +165,27 @@ res.send(await getBuffer(random))
 
 
 app.get('/facebook', facebook);
+apikey = req.query.apikey
+url = req.query.url
+if(!apikey)return res.json({status:false,msg:'cade o parametro apikey'})
+if(!key.includes(apikey))return res.json({status:false,msg:'apikey invalida'})
+if (!url) return res.json({ status : false, creator : `TIO MODZ </>`, message : "Cade o parametro url?"}) 
+        if(key.includes(apikey)){
+       fb(url)
+	.then(data => {
+		var result = data;
+		res.json({
+			result
+		})
+		})
+         .catch(e => {
+         	console.log(e);
+         	res.json({erro:'erro no modulo'})
+})
+} else {
+  res.json({erro:'erro no modulo'})
+}
+
 
 app.get('/api/igstory', async (req, res, next) => {
           apikey = req.query.apikey
